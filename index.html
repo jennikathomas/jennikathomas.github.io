@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Jennika Thomas - Portfolio</title>
+<meta name="description" content="Jennika Thomas — Financial Analyst / FP&A. Forecasting, modelling, dashboards, and management reporting." />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --dark:#021026;
+    --navy:#042040;
+    --blue:#0b4b78;
+    --light-blue:#7fbef6;
+    --pale:#e9f6ff;
+    --muted:#9bb3c9;
+    --glass: rgba(255,255,255,0.02);
+    --accent: linear-gradient(90deg,#0ea5ff,#2dd4bf);
+    --maxw:1100px;
+    --radius:12px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    color:var(--pale);
+    background: linear-gradient(180deg, var(--dark) 0%, var(--navy) 25%, var(--blue) 55%, #0f6fb6 80%, #dff5ff 100%);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* container */
+  .wrap{max-width:var(--maxw);margin:28px auto;padding:20px;display:flex;flex-direction:column;gap:22px;align-items:center}
+
+  /* header */
+  header{width:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 18px;background:rgba(255,255,255,0.02);backdrop-filter:blur(6px);border-radius:12px;border:1px solid rgba(255,255,255,0.03);position:sticky;top:12px;z-index:100}
+  .brand{display:flex;align-items:center;gap:12px}
+  .avatar{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#7ecfff,#4dd0e1);display:flex;align-items:center;justify-content:center;color:#012;font-weight:800;font-size:18px;box-shadow:0 14px 40px rgba(2,8,20,0.5);overflow:hidden}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  .title{display:flex;flex-direction:column}
+  .title h1{margin:0;font-family:Poppins,system-ui;font-size:16px}
+  .title p{margin:3px 0 0;color:var(--muted);font-size:12px}
+
+  nav{display:flex;gap:10px;align-items:center}
+  .nav-link{color:var(--pale);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600;transition:all .16s}
+  .nav-link:hover{transform:translateY(-3px);text-shadow:0 12px 30px rgba(15,111,182,0.06)}
+  .nav-link.res{background:linear-gradient(90deg,#0ea5ff,#2dd4bf);color:#012;padding:9px 14px;border-radius:12px;font-weight:800}
+  .nav-link.res:hover{transform:scale(1.03);box-shadow:0 22px 80px rgba(45,212,191,0.12)}
+
+  .topicon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#7ecfff,#4dd0e1);color:#012;border:0;text-decoration:none;box-shadow:0 12px 40px rgba(2,8,20,0.5)}
+
+  /* HERO */
+  .hero{width:100%;max-width:1040px;padding:48px 36px;border-radius:16px;position:relative;overflow:hidden}
+  .hero-inner{background:rgba(255,255,255,0.02);padding:34px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 40px 110px rgba(2,8,24,0.6)}
+  .hero h2{font-family:Poppins,system-ui;font-size:40px;margin:0;color:var(--pale);letter-spacing:0.2px}
+  .hero p.lead{margin:14px 0 0;color:var(--muted);font-size:16px;line-height:1.6;max-width:860px}
+  .cta-row{display:flex;gap:12px;margin-top:20px}
+  .btn{padding:12px 16px;border-radius:12px;border:0;font-weight:800;cursor:pointer;transition:transform .14s,box-shadow .14s}
+  .btn-download{background:linear-gradient(90deg,#0ea5ff,#2dd4bf);color:#012;box-shadow:0 26px 70px rgba(13,165,255,0.10)}
+  .btn-download:hover{transform:scale(1.05);box-shadow:0 40px 140px rgba(13,165,255,0.16)}
+  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+  .btn-ghost:hover{transform:scale(1.03)}
+
+  /* main layout */
+  main{width:100%;display:flex;flex-direction:column;gap:36px;align-items:center;padding-bottom:40px}
+  .content{width:100%;max-width:980px;display:flex;flex-direction:column;gap:36px;align-items:stretch}
+
+  /* headings (no line beside) */
+  .section-head{font-family:Poppins,system-ui;font-size:20px;margin:0;color:var(--pale);font-weight:700}
+  .section-sub{height:6px;width:64px;border-radius:6px;background:linear-gradient(90deg,#7ecfff,#4dd0e1);margin-top:8px;box-shadow:0 10px 40px rgba(77,208,225,0.06)}
+
+  .thin-sep{height:1px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));margin-top:18px;border-radius:2px}
+
+  /* about */
+  .about-text{color:var(--muted);font-size:15px;line-height:1.7;text-align:left}
+
+  /* experience */
+  .experience{display:flex;flex-direction:column;gap:12px}
+  .exp-block{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006));padding:14px;border-radius:10px;color:var(--muted);line-height:1.6;border:1px solid rgba(255,255,255,0.02)}
+
+  /* projects */
+  .project-row{display:grid;grid-template-columns:1fr 300px;gap:18px;align-items:start}
+  .project-main{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)}
+  .project-title{font-weight:800;color:#7ecfff}
+  .project-sub{color:var(--muted);margin-top:8px}
+  .project-files{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+  .file-btn{padding:8px 10px;border-radius:10px;background:linear-gradient(90deg,#4dd0e1,#7ecfff);color:#012;font-weight:800;text-decoration:none}
+  .view-btn{margin-top:12px;padding:9px 12px;border-radius:10px;background:transparent;color:var(--muted);font-weight:800;border:1px solid rgba(255,255,255,0.03);cursor:pointer}
+
+  .project-side{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)}
+  .stat{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,0.02)}
+
+  .more{display:none;margin-top:12px}
+  .more.open{display:block}
+
+  /* certificates grid 3 + 3 */
+  .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .cert-card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006));border:1px solid rgba(255,255,255,0.02);box-shadow:0 20px 70px rgba(3,8,20,0.55);transition:transform .18s,box-shadow .18s,filter .18s}
+  .cert-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 40px 160px rgba(13,165,255,0.12);filter:brightness(1.05)}
+  .cert-title{font-weight:800;color:var(--pale);font-size:14px}
+  .cert-desc{color:var(--muted);margin-top:8px;font-size:13px}
+
+  /* skills */
+  .skills-grid{display:flex;flex-wrap:wrap;gap:10px}
+  .skill-pill{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(77,208,225,0.04), rgba(126,207,255,0.02));color:#9fe4ff;font-weight:700;border:1px solid rgba(77,208,225,0.03)}
+
+  /* interests */
+  .interests{display:flex;gap:10px;flex-wrap:wrap}
+  .interest{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted);font-weight:600}
+
+  /* contact */
+  .contact-row{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:12px}
+  .contact-icon{width:72px;height:72px;border-radius:14px;background:linear-gradient(135deg,#7ecfff,#4dd0e1);display:flex;align-items:center;justify-content:center;color:#012;font-weight:800;cursor:pointer;transition:transform .14s,box-shadow .14s}
+  .contact-icon:hover{transform:translateY(-8px) scale(1.06);box-shadow:0 40px 160px rgba(77,208,225,0.12)}
+  .contact-icon svg{width:26px;height:26px;fill:#012}
+
+  /* footer */
+  footer{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:980px;color:var(--muted);font-size:13px;padding:8px 6px;border-top:1px solid rgba(255,255,255,0.02);margin-top:6px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.visible{opacity:1;transform:none}
+
+  @media (max-width:980px){
+    .project-row{grid-template-columns:1fr}
+    .cert-grid{grid-template-columns:1fr}
+    .avatar{width:48px;height:48px}
+    .hero h2{font-size:30px}
+    .contact-icon{width:60px;height:60px}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="avatar" id="avatar"><img id="photo" src="" alt="" style="display:none"/><span id="initials">JT</span></div>
+        <div class="title">
+          <h1>Jennika Thomas</h1>
+          <p>Financial Analyst • FP&A</p>
+        </div>
+      </div>
+
+      <nav>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#certs">Certifications</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link res" href="Jennika_Thomas_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+
+      <a class="topicon" href="mailto:jennikathomas07@gmail.com" title="Email">
+        <svg viewBox="0 0 24 24"><path d="M2 6.5V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6.5L12 12 2 6.5z"/></svg>
+      </a>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-inner reveal">
+        <h2>Hi there!</h2>
+        <p class="lead">I connect financial data with strategy, transforming analysis into insights that drive smarter decisions and measurable impact. I bring structure and foresight to data, building models and dashboards that make financial strategy measurable and actionable.</p>
+
+        <div class="cta-row">
+          <a class="btn btn-download" href="Jennika_Thomas_Resume.pdf" download>Download Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN -->
+    <main>
+      <div class="content">
+
+        <!-- ABOUT -->
+        <section id="about" class="reveal">
+          <div class="section-head">About</div>
+          <div class="section-sub" aria-hidden="true"></div>
+          <p class="about-text" style="margin-top:12px">
+            Numbers don’t just add up — they speak. I build forecasting tools, dashboards, and models that help teams move beyond “what happened” to “what next?” With a foundation in financial driver analysis and data automation, I turn complex inputs into concise, actionable narratives that support decision-making and improve performance.
+          </p>
+          <div class="thin-sep"></div>
+        </section>
+
+        <!-- EXPERIENCE -->
+<section id="experience" class="reveal">
+  <div class="section-head">Experience</div>
+  <div class="section-sub" aria-hidden="true"></div>
+
+  <div style="margin-top:12px" class="experience">
+    <!-- First line: Company & Location -->
+    <div class="exp-block" style="display:flex; justify-content:space-between; font-weight:700; color:var(--accent);">
+      <span>EY GDS LLP</span>
+      <span>Bengaluru, India</span>
+    </div>
+
+    <!-- Second line: Role & Dates -->
+    <div class="exp-block" style="display:flex; justify-content:space-between; margin-top:2px; font-weight:600;">
+      <span>Assurance Associate</span>
+      <span>Sep 2024 – Mar 2025</span>
+    </div>
+
+    <!-- Description paragraphs -->
+    <div class="exp-block" style="margin-top:8px;">
+      I supported year-end and quarter-close activities for 20+ multinational clients by reconciling revenue, expense categories, and key balance-sheet accounts to ensure accurate reporting and a reliable foundation for forecasting.
+    </div>
+
+    <div class="exp-block" style="margin-top:6px;">
+      Using Excel automation and DataSnipper, I streamlined validation and tie-out workflows, reducing manual effort by ~30% and accelerating review cycles by ~35%. I analysed variances and investigated mismatches to provide clear commentary and root-cause insight for leadership review.
+    </div>
+  </div>
+
+  <div class="thin-sep"></div>
+</section>
+
+
+        <!-- PROJECTS -->
+        <section id="projects" class="reveal">
+          <div class="section-head">Projects</div>
+          <div class="section-sub" aria-hidden="true"></div>
+
+          <div class="project-row" style="margin-top:12px">
+            <div class="project-main">
+              <div class="project-title">3-Year Financial Forecast Model — Harmonia Music Co.</div>
+              <div class="project-sub">Driver-led FY25–FY27 income statement and dashboard for budgeting and concise management review.</div>
+
+              <div style="margin-top:10px;color:var(--muted)">What I did: constructed a base-year P&L, built linked assumptions, and implemented driver-led FY25–FY27 forecasts; created a concise dashboard showing revenue, EBIT, net profit and margins with scenario toggles for quick leadership review.</div>
+
+              <div class="project-files">
+                <a class="file-btn" href="FP&A_Forecast_Model.xlsx" download>Download model</a>
+                <a class="file-btn" href="FP&A_Forecast_Model_Dashboard.pdf" target="_blank">Open dashboard</a>
+              </div>
+
+              <button class="view-btn" data-target="more1">View details</button>
+
+              <div class="more" id="more1">
+                <div style="margin-top:12px;color:var(--muted)">A compact, scenario-ready model with clear assumptions and a dashboard designed for concise management discussions. Toggle assumptions and view P&L/margin impacts immediately.</div>
+                <ul style="margin-top:8px;color:var(--muted);line-height:1.6">
+                  <li>Driver-led forecast (Revenue growth, COGS%, OPEX%, Interest).</li>
+                  <li>Dashboard summarises Revenue, EBIT and Net Margin for quick decisions.</li>
+                </ul>
+
+                <div class="mini-chart" style="margin-top:12px">
+                  <svg viewBox="0 0 320 80" preserveAspectRatio="none" width="100%" height="100%">
+                    <defs><linearGradient id="g1"><stop offset="0" stop-color="#7ecfff"/><stop offset="1" stop-color="#4dd0e1"/></linearGradient></defs>
+                    <polyline fill="none" stroke="url(#g1)" stroke-width="3" points="10,60 70,45 130,34 190,28 250,22 310,18"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <aside class="project-side">
+              <div style="font-weight:800">Snapshot</div>
+              <div class="stat"><div style="color:var(--muted)">Base revenue</div><div style="font-weight:800">₹ 5.0m</div></div>
+              <div class="stat"><div style="color:var(--muted)">FY27 margin</div><div style="font-weight:800">~13.7%</div></div>
+              <div style="margin-top:12px;color:var(--muted);font-size:13px">Mini visual</div>
+              <div class="mini-chart" style="margin-top:8px">
+                <svg viewBox="0 0 320 80" preserveAspectRatio="none"><polyline fill="none" stroke="#4dd0e1" stroke-width="2.4" points="10,60 70,48 130,40 190,32 250,22" /></svg>
+              </div>
+            </aside>
+          </div>
+
+          <div class="thin-sep"></div>
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section id="certs" class="reveal">
+          <div class="section-head">Certifications</div>
+          <div class="section-sub" aria-hidden="true"></div>
+
+          <div class="cert-grid" style="margin-top:12px">
+            <div class="cert-card">
+              <div class="cert-title">POWER BI 101: Microsoft POWER BI Essentials - Udemy (Jun 2025)</div>
+              <div class="cert-desc">Data Visualization, KPI Dashboards, and Power BI Reporting.</div>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-title">EY Finance - Bronze Learning - EY (Nov 2024)</div>
+              <div class="cert-desc">Budgeting & Forecasting, Corporate Finance and Financial Analysis</div>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-title">Certified Programme in Fundamentals in Capital Market - Stockathon Academy (Apr 2024)</div>
+              <div class="cert-desc">Market instruments, Research frameworks and Capital markets fundamentals.</div>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-title">Goodbody Stock Picking Simulation - Forage (Sep 2023)</div>
+              <div class="cert-desc">Stock Picking Simulation and Equity Research Pitch Presentation.</div>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-title">JP Morgan Chase Investment Banking Simulation - Forage (Sep 2023)</div>
+              <div class="cert-desc">Developed DCF model to analyze profitabilty and valuation sensitivity.</div>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-title">Microsoft Office Specialist Excel 2016 - NICT (Oct 2022)</div>
+              <div class="cert-desc">Advanced Excel: INDEX/MATCH, Power Query and automated reporting templates.</div>
+            </div>
+          </div>
+
+          <div class="thin-sep"></div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="reveal">
+          <div class="section-head">Skills</div>
+          <div class="section-sub" aria-hidden="true"></div>
+          <div style="margin-top:12px" class="skills-grid">
+            <div class="skill-pill">Budgeting</div>
+            <div class="skill-pill">Variance Analysis</div>
+            <div class="skill-pill">Analytical Review</div>
+            <div class="skill-pill">KPI Dashboards</div>
+            <div class="skill-pill">Risk Assessment</div>
+            <div class="skill-pill">Financial Modeling</div>
+            <div class="skill-pill">Advanced Excel</div>
+            <div class="skill-pill">Power BI</div>
+            <div class="skill-pill">Tableau</div>
+            <div class="skill-pill">SQL</div>
+            <div class="skill-pill">Valuation</div>
+          </div>
+
+          <div class="thin-sep"></div>
+        </section>
+
+        <!-- INTERESTS -->
+        <section class="reveal">
+          <div class="section-head">Interests</div>
+          <div class="section-sub" aria-hidden="true"></div>
+          <div style="margin-top:12px" class="interests">
+            <div class="interest">Equity Markets</div>
+            <div class="interest">Portfolio strategies</div>
+            <div class="interest">Behavioral Finance</div>
+            <div class="interest">Violin</div>
+            <div class="interest">Sketching</div>
+          </div>
+          <div class="thin-sep"></div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="reveal" style="text-align:center">
+          <div class="section-head">Contact</div>
+          <div class="section-sub" aria-hidden="true"></div>
+  
+<div style="color: #001f4d; font-size:13px; font-family: 'Inter', sans-serif; margin-top:8px; text-shadow: 0 0 6px rgba(0, 31, 77, 0.7);">
+    Let’s connect — click an icon to reach me directly
+</div>
+
+
+          <div class="contact-row">
+            <a class="contact-icon" href="mailto:jennikathomas07@gmail.com" title="Email">
+              <svg viewBox="0 0 24 24"><path d="M2 6.5V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6.5L12 12 2 6.5z"/></svg>
+            </a>
+            <a class="contact-icon" href="https://linkedin.com/in/jennika-thomas" target="_blank" rel="noopener" title="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v15H0zM7.5 8h4.7v2.07h.07c.66-1.25 2.28-2.57 4.7-2.57C23 7.5 24 10.2 24 14.2V23H19v-7.6c0-1.81-.03-4.13-2.52-4.13-2.52 0-2.9 1.96-2.9 4v7.73H7.5V8z"/></svg>
+            </a>
+            <a class="contact-icon" href="https://github.com/jennikathomas" target="_blank" rel="noopener" title="GitHub">
+              <svg viewBox="0 0 24 24"><path d="M12 .5C5.73.5.75 5.48.75 11.77c0 4.89 3.16 9.03 7.57 10.49.55.1.75-.24.75-.53v-1.9c-3.08.67-3.73-1.48-3.73-1.48-.5-1.3-1.22-1.65-1.22-1.65-.99-.68.08-.67.08-.67 1.09.08 1.67 1.12 1.67 1.12.97 1.66 2.54 1.18 3.15.9.1-.7.38-1.18.69-1.45-2.46-.28-5.05-1.23-5.05-5.48 0-1.21.43-2.2 1.12-2.98-.11-.28-.49-1.4.11-2.92 0 0 .9-.29 2.95 1.12a10.2 10.2 0 0 1 5.38 0C18.8 6.2 19.7 6.5 19.7 6.5c.6 1.52.22 2.64.11 2.92.7.78 1.12 1.77 1.12 2.98 0 4.26-2.6 5.2-5.07 5.48.39.34.74 1.03.74 2.08v3.08c0 .29.2.64.76.53 4.4-1.46 7.56-5.6 7.56-10.49C23.25 5.48 18.27.5 12 .5z"/></svg>
+            </a>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- footer -->
+      <footer>
+        <div>@2025 Jennika Thomas</div>
+        <div style="opacity:.9;color:var(--muted);font-size:13px">Designed for clarity and precision</div>
+      </footer>
+
+    </main>
+  </div>
+
+<script>
+/* ---------- interactions ---------- */
+
+/* Replace initials with photo.jpg if present */
+(function(){
+  fetch('photo.jpg', {method:'HEAD'}).then(r=>{
+    if (r.ok){
+      const img = document.getElementById('photo');
+      img.src = 'photo.jpg';
+      img.style.display = 'block';
+      document.getElementById('initials').style.display = 'none';
+    }
+  }).catch(()=>{});
+})();
+
+/* Reveal on scroll */
+(function(){
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible','reveal-visible','visible');
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+
+/* Nav active state + offset scroll */
+(function(){
+  const sections = document.querySelectorAll('main section[id]');
+  const links = document.querySelectorAll('.nav-link');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l=>l.classList.remove('active'));
+        const a = document.querySelector('.nav-link[href="#'+entry.target.id+'"]');
+        if (a) a.classList.add('active');
+      }
+    });
+  }, {root:null, rootMargin:'-40% 0px -40% 0px', threshold:0});
+  sections.forEach(s=>obs.observe(s));
+  document.querySelectorAll('.nav-link').forEach(a=>{
+    a.addEventListener('click', (ev)=>{
+      // If Resume link (external), allow default
+      if (a.classList.contains('res')) return;
+      ev.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({top, behavior:'smooth'});
+    });
+  });
+})();
+
+/* Project details toggle */
+document.addEventListener('click', function(e){
+  if (e.target.matches('.view-btn')) {
+    const id = e.target.getAttribute('data-target');
+    const el = document.getElementById(id);
+    if (!el) return;
+    const open = el.classList.toggle('open');
+    e.target.textContent = open ? 'Hide details' : 'View details';
+    if (open) el.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+});
+
+/* Tooltip-ish titles for contact icons */
+document.querySelectorAll('.contact-icon').forEach(icon=>{
+  icon.addEventListener('mouseenter', ()=>{ icon.style.transform='translateY(-6px) scale(1.04)'; });
+  icon.addEventListener('mouseleave', ()=>{ icon.style.transform=''; });
+});
+
+/* Done */
+</script>
+</body>
+</html>
